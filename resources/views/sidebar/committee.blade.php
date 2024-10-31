@@ -7,8 +7,8 @@
                     <div class="flex flex-col gap-4">
                         <div class="flex gap-x-2">
                             @if ($committee->hasMedia('profile'))
-                                <div class="profile-image avatar">
-                                    <div class="w-12 h-12 rounded-full">
+                                <div class="avatar">
+                                    <div class="committee-profile-image">
                                         <img src="{{ $committee->getFirstMedia('profile')->getAvailableUrl(['avatar', 'thumb', 'thumb-xl']) }}"
                                             alt="{{ $committee->fullName }}" />
                                     </div>
@@ -23,17 +23,17 @@
                                     <div class="flex items-center gap-1">
                                         @if($committee->getMeta('orcid_url'))
                                         <a href="{{ $committee->getMeta('orcid_url') }}" target="_blank">
-                                            <x-academicon-orcid class="w-5 h-5 text-[#A1C837]" />
+                                            <x-academicon-orcid class="orcid-logo" />
                                         </a>
                                         @endif
                                         @if($committee->getMeta('google_scholar_url'))
                                         <a href="{{ $committee->getMeta('google_scholar_url') }}" target="_blank">
-                                            <x-academicon-google-scholar class="w-5 h-5 text-[#4185F4]" />
+                                            <x-academicon-google-scholar class="google-scholar-logo" />
                                         </a>
                                         @endif
                                         @if($committee->getMeta('scopus_url'))
                                         <a href="{{ $committee->getMeta('scopus_url') }}" target="_blank">
-                                            <x-academicon-scopus class="w-5 h-5 text-[#e9711c]" />
+                                            <x-academicon-scopus class="scopus-logo" />
                                         </a>
                                         @endif
                                     </div>

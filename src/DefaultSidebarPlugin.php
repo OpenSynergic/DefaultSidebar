@@ -3,6 +3,7 @@
 namespace DefaultSidebar;
 
 use App\Classes\Plugin;
+use App\Facades\Hook;
 use App\Facades\SidebarFacade;
 
 class DefaultSidebarPlugin extends Plugin
@@ -10,6 +11,12 @@ class DefaultSidebarPlugin extends Plugin
     public function boot()
     {
         SidebarFacade::register($this->getSidebars());
+
+        $this->enablePublicAsset();
+
+        Hook::add('Frontend::Views::Head', function ($hookName, &$output){
+            $output .= '<link rel="stylesheet" href="'.$this->asset('defaultsidebar.css').'">';
+        });
     }
 
     protected function getSidebars()
