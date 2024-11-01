@@ -24,16 +24,16 @@ jobs:
     - name: Create tar.gz archive
       run: |
         mkdir -p ./release
-        tar -czf ./release/DefaultSidebar.tar.gz \
+        tar -czf ./release/plugin.tar.gz \
           --exclude='./release' \
           --exclude='./.git' \
           --exclude='./node_modules' \
           --exclude='./tests' \
           --exclude='./.github' \
           -C . .
-        ls -l ./release/DefaultSidebar.tar.gz
-        if [ ! -f ./release/DefaultSidebar.tar.gz ]; then
-          echo "Error: DefaultSidebar.tar.gz was not created"
+        ls -l ./release/plugin.tar.gz
+        if [ ! -f ./release/plugin.tar.gz ]; then
+          echo "Error: plugin.tar.gz was not created"
           exit 1
         fi
     
@@ -57,6 +57,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./release/DefaultSidebar.tar.gz
+        asset_path: ./release/plugin.tar.gz
         asset_name: DefaultSidebar-${{ github.ref_name }}.tar.gz
         asset_content_type: application/gzip
