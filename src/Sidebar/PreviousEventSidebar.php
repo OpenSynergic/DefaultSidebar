@@ -40,6 +40,7 @@ class PreviousEventSidebar extends Sidebar
                 ->withoutTrashed()
                 ->with('conference')
                 ->where('id', '!=', app()->getCurrentScheduledConferenceId())
+                ->where('conference_id', app()->getCurrentConferenceId())
                 ->where('state', ScheduledConferenceState::Archived)
                 ->orderBy('date_start', 'desc')
                 ->take(3)
