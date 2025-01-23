@@ -14,7 +14,7 @@ class DefaultSidebarPlugin extends Plugin
 
         $this->enablePublicAsset();
 
-        Hook::add('Frontend::Views::Head', function ($hookName, &$output){
+        Hook::add('Frontend::Views::Head', function ($hookName, &$output) {
             $output .= '<link rel="stylesheet" href="'.$this->asset('defaultsidebar.css').'">';
         });
     }
@@ -24,11 +24,10 @@ class DefaultSidebarPlugin extends Plugin
         $conference = app()->getCurrentConference();
         $scheduledConference = app()->getCurrentScheduledConference();
         $sidebars = [];
-        
-        if($scheduledConference){
+
+        if ($scheduledConference) {
             return [
                 new Sidebar\SubmitNowSidebar,
-                new Sidebar\RegisterNowSidebar,
                 new Sidebar\CommitteeSidebar,
                 new Sidebar\TopicsSidebar,
                 new Sidebar\TimelineSidebar,
@@ -36,8 +35,7 @@ class DefaultSidebarPlugin extends Plugin
             ];
         }
 
-
-        if($conference){
+        if ($conference) {
             return [];
         }
 

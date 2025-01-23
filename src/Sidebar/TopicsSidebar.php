@@ -3,10 +3,8 @@
 namespace DefaultSidebar\Sidebar;
 
 use App\Classes\Sidebar;
-use App\Models\Committee;
 use App\Models\Topic;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\HtmlString;
 
 class TopicsSidebar extends Sidebar
 {
