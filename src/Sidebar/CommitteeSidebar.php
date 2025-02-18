@@ -5,7 +5,6 @@ namespace DefaultSidebar\Sidebar;
 use App\Classes\Sidebar;
 use App\Models\Committee;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\HtmlString;
 
 class CommitteeSidebar extends Sidebar
 {
@@ -31,7 +30,7 @@ class CommitteeSidebar extends Sidebar
         return [
             'id' => $this->getId(),
             'name' => $this->getName(),
-            'committees' => Committee::query()->with(['meta'])->orderBy('order_column')->take(3)->get(),
+            'committees' => Committee::query()->with(['meta', 'media'])->orderBy('order_column')->take(3)->get(),
         ];
     }
 }

@@ -3,10 +3,8 @@
 namespace DefaultSidebar\Sidebar;
 
 use App\Classes\Sidebar;
-use App\Models\Committee;
 use App\Models\Timeline;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\HtmlString;
 
 class TimelineSidebar extends Sidebar
 {
@@ -31,14 +29,13 @@ class TimelineSidebar extends Sidebar
     {
 
         $timelines = Timeline::all();
-        
+
         $formattedTimelines = [];
         $today = now()->format('Y-m-d');
         $tommorow = now()->addDay()->format('Y-m-d');
 
         foreach ($timelines as $timeline) {
             $timelineDate = $timeline->date->format('Y-m-d');
-
 
             $modifier = match (true) {
                 $timelineDate === $today => 'current_timeline',
